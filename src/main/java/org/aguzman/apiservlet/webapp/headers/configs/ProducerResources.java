@@ -7,6 +7,8 @@ import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import org.aguzman.apiservlet.webapp.headers.util.JpaUtil;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -40,4 +42,16 @@ public class ProducerResources {
         log.info("Cerrando la conexión a la BD MySQL!!");
     }
 
+    @Produces
+    @RequestScoped
+    private EntityManager beanEntityManager(){
+        return JpaUtil.getEntityManager();
+    }
+
+    public void close(@Disposes EntityManager em){
+        if(em.isOpen()){
+            em.close();
+            log.info("Cerrando la conexión del EntityManager");
+        }
+    }
 }

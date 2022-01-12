@@ -1,7 +1,6 @@
 package org.aguzman.apiservlet.webapp.headers.services;
 
-import org.aguzman.apiservlet.webapp.headers.models.Producto;
-import org.aguzman.apiservlet.webapp.headers.models.Usuario;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Usuario;
 
 import java.util.List;
 import java.util.Optional;

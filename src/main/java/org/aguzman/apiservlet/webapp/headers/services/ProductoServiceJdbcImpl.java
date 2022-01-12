@@ -3,8 +3,8 @@ package org.aguzman.apiservlet.webapp.headers.services;
 import jakarta.inject.Inject;
 import org.aguzman.apiservlet.webapp.headers.configs.ProductoServicePrincipal;
 import org.aguzman.apiservlet.webapp.headers.configs.Service;
-import org.aguzman.apiservlet.webapp.headers.models.Categoria;
-import org.aguzman.apiservlet.webapp.headers.models.Producto;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Categoria;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Producto;
 import org.aguzman.apiservlet.webapp.headers.repositories.CrudRepository;
 
 import java.sql.SQLException;

@@ -1,6 +1,6 @@
 package org.aguzman.apiservlet.webapp.headers.repositories;
 
-import org.aguzman.apiservlet.webapp.headers.models.Usuario;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Usuario;
 
 import java.sql.SQLException;
 

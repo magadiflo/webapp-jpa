@@ -1,7 +1,7 @@
 package org.aguzman.apiservlet.webapp.headers.services;
 
-import org.aguzman.apiservlet.webapp.headers.models.Categoria;
-import org.aguzman.apiservlet.webapp.headers.models.Producto;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Categoria;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Producto;
 
 import java.util.Arrays;
 import java.util.List;

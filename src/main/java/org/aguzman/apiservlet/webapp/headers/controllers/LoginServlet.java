@@ -4,7 +4,7 @@ import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import org.aguzman.apiservlet.webapp.headers.models.Usuario;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Usuario;
 import org.aguzman.apiservlet.webapp.headers.services.LoginService;
 import org.aguzman.apiservlet.webapp.headers.services.UsuarioService;
 

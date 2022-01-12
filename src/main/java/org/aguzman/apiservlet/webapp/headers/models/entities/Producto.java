@@ -1,16 +1,32 @@
-package org.aguzman.apiservlet.webapp.headers.models;
+package org.aguzman.apiservlet.webapp.headers.models.entities;
+
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "productos")
 public class Producto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
+
     private int precio;
+
     private String sku;
+
+    @Column(name = "fecha_registro")
     private LocalDate fechaRegistro;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    public Producto() {}
+    public Producto() {
+    }
 
     public Producto(Long id, String nombre, String tipo, int precio) {
         this.id = id;

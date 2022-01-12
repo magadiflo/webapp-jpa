@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.aguzman.apiservlet.webapp.headers.configs.ProductoServicePrincipal;
 import org.aguzman.apiservlet.webapp.headers.models.Carro;
 import org.aguzman.apiservlet.webapp.headers.models.ItemCarro;
-import org.aguzman.apiservlet.webapp.headers.models.Producto;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Producto;
 import org.aguzman.apiservlet.webapp.headers.services.ProductoService;
 
 import java.io.IOException;

@@ -3,7 +3,7 @@ package org.aguzman.apiservlet.webapp.headers.repositories;
 import jakarta.inject.Inject;
 import org.aguzman.apiservlet.webapp.headers.configs.MysqlConn;
 import org.aguzman.apiservlet.webapp.headers.configs.Repository;
-import org.aguzman.apiservlet.webapp.headers.models.Categoria;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Categoria;
 
 import java.sql.*;
 import java.util.ArrayList;

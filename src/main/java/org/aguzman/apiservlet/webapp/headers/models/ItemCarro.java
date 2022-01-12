@@ -1,5 +1,7 @@
 package org.aguzman.apiservlet.webapp.headers.models;
 
+import org.aguzman.apiservlet.webapp.headers.models.entities.Producto;
+
 import java.util.Objects;
 
 public class ItemCarro {

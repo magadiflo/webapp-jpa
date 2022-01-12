@@ -6,8 +6,8 @@ import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import org.aguzman.apiservlet.webapp.headers.configs.MysqlConn;
 import org.aguzman.apiservlet.webapp.headers.configs.Repository;
-import org.aguzman.apiservlet.webapp.headers.models.Categoria;
-import org.aguzman.apiservlet.webapp.headers.models.Producto;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Categoria;
+import org.aguzman.apiservlet.webapp.headers.models.entities.Producto;
 
 import java.sql.*;
 import java.util.ArrayList;
