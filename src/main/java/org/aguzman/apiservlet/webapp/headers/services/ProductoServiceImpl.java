@@ -1,49 +1,81 @@
 package org.aguzman.apiservlet.webapp.headers.services;
 
+import jakarta.inject.Inject;
+import org.aguzman.apiservlet.webapp.headers.configs.ProductoServicePrincipal;
+import org.aguzman.apiservlet.webapp.headers.configs.RepositoryJpa;
+import org.aguzman.apiservlet.webapp.headers.configs.Service;
+import org.aguzman.apiservlet.webapp.headers.interceptors.TransactionalJpa;
 import org.aguzman.apiservlet.webapp.headers.models.entities.Categoria;
 import org.aguzman.apiservlet.webapp.headers.models.entities.Producto;
+import org.aguzman.apiservlet.webapp.headers.repositories.CrudRepository;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Con la anotación @Alternative le decimos que esta clase que implementa la interfaz ProductoService no será
- * usada en la inyección de dependencia, sino la clase que no tenga esa anotación. Ahora, si quisieramos usar
- * esta clase para como inyección de dependencia, deberíamos agregarle otra anotación @Named("mi_nombre") y
- * usar ese nombre para poder hacer la inyección de dependencia
- */
-//@Alternative
-public class ProductoServiceImpl implements ProductoService{
+@Service
+@ProductoServicePrincipal
+@TransactionalJpa
+public class ProductoServiceImpl implements ProductoService {
+
+    @Inject
+    @RepositoryJpa
+    private CrudRepository<Producto> repositoryJdbc;
+
+    @Inject
+    @RepositoryJpa
+    private CrudRepository<Categoria> repositoryCategoriaJdbc;
+
     @Override
     public List<Producto> listar() {
-        return Arrays.asList(new Producto(1L, "notebook", "computacion", 175000),
-                new Producto(2L, "mesa escritorio", "oficina", 100000),
-                new Producto(3L, "teclado mecanico", "computacion", 40000));
+        try {
+            return this.repositoryJdbc.listar();
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public Optional<Producto> porId(Long id) {
-        return listar().stream().filter(p -> p.getId().equals(id)).findAny();
+        try {
+            return Optional.ofNullable(this.repositoryJdbc.porId(id));
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public void guardar(Producto producto) {
-
+        try {
+            this.repositoryJdbc.guardar(producto);
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public void eliminar(Long id) {
-
+        try {
+            this.repositoryJdbc.eliminar(id);
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public List<Categoria> listarCategoria() {
-        return null;
+        try {
+            return this.repositoryCategoriaJdbc.listar();
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public Optional<Categoria> porIdCategoria(Long id) {
-        return Optional.empty();
+        try {
+            return Optional.ofNullable(this.repositoryCategoriaJdbc.porId(id));
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
     }
 }

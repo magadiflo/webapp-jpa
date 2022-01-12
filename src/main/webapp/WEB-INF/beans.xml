@@ -5,5 +5,6 @@
     <interceptors>
         <class>org.aguzman.apiservlet.webapp.headers.interceptors.LoggingInterceptor</class>
         <class>org.aguzman.apiservlet.webapp.headers.interceptors.TransactionalInterceptor</class>
+        <class>org.aguzman.apiservlet.webapp.headers.interceptors.TransactionalJpaInterceptor</class>
     </interceptors>
 </beans>

@@ -3,10 +3,12 @@ package org.aguzman.apiservlet.webapp.headers.repositories;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import org.aguzman.apiservlet.webapp.headers.configs.Repository;
+import org.aguzman.apiservlet.webapp.headers.configs.RepositoryJpa;
 import org.aguzman.apiservlet.webapp.headers.models.entities.Producto;
 
 import java.util.List;
 
+@RepositoryJpa
 @Repository
 public class ProductoRepositoryJpaImpl implements CrudRepository<Producto> {
 

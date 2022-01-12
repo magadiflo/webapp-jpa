@@ -1,7 +1,9 @@
 package org.aguzman.apiservlet.webapp.headers.services;
 
 import jakarta.inject.Inject;
+import org.aguzman.apiservlet.webapp.headers.configs.RepositoryJpa;
 import org.aguzman.apiservlet.webapp.headers.configs.Service;
+import org.aguzman.apiservlet.webapp.headers.interceptors.TransactionalJpa;
 import org.aguzman.apiservlet.webapp.headers.models.entities.Usuario;
 import org.aguzman.apiservlet.webapp.headers.repositories.UsuarioRepository;
 
@@ -9,12 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService{
+@TransactionalJpa
+public class UsuarioServiceImpl implements UsuarioService {
 
     private UsuarioRepository usuarioRepository;
 
     @Inject
-    public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
+    public UsuarioServiceImpl(@RepositoryJpa UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
@@ -38,9 +41,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public void eliminar(Long id) {
-        try{
+        try {
             this.usuarioRepository.eliminar(id);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
@@ -50,15 +53,15 @@ public class UsuarioServiceImpl implements UsuarioService{
         try {
             return Optional.ofNullable(this.usuarioRepository.porUsername(username)).filter(u -> u.getPassword().equals(password));
         } catch (Exception e) {
-           throw new ServiceJdbcException(e.getMessage(), e.getCause());
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
 
     @Override
     public Optional<Usuario> porId(Long id) {
-        try{
+        try {
             return Optional.ofNullable(this.usuarioRepository.porId(id));
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
