@@ -92,11 +92,11 @@ public class ProductoFormServlet extends HttpServlet {
         }catch(DateTimeParseException e){
             fecha = null;
         }
-        long id;
+        Long id;
         try{
-            id = Long.parseLong(req.getParameter("id"));
+            id = Long.valueOf(req.getParameter("id"));
         }catch(NumberFormatException e){
-            id = 0L;
+            id = null;
         }
         Producto producto = new Producto();
         producto.setId(id);
